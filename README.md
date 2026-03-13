@@ -24,7 +24,7 @@ docker run -d \
   -p 8080:80 \
   --name homelab-dashboard \
   --restart unless-stopped \
-  backatom/homelab-dashboard:latest
+  maxbleakley/homelab-dashboard:latest
 
 ### Docker Compose
 Create a docker-compose.yml:
