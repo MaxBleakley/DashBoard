@@ -40,7 +40,7 @@ services:
 Then run:
 docker compose up -d
 
-Access at http://localhost:8080 or http://<your-host-ip>:8080
+Access at http://localhost:8080 or http://your-ip:8080
 
 ---
 
