@@ -1,0 +1,110 @@
+// THis is for initial deployment, gives users general idea of wehat dashboard can do and also 
+// how it can be deployed. 
+export const SAMPLE_NODES = [
+  {
+    id: 'pve-1',
+    type: 'proxmox',
+    position: { x: 320, y: 140 },
+    data: {
+      nodeType: 'proxmox',
+      hostname: 'pve-01',
+      ip: '192.168.1.10',
+      cores: '32',
+      ram: '128',
+      notes: 'Primary Proxmox node',
+    },
+  },
+  {
+    id: 'vm-1',
+    type: 'vm',
+    position: { x: 100, y: 340 },
+    data: {
+      nodeType: 'vm',
+      name: 'pihole',
+      vmid: '100',
+      ip: '192.168.1.53',
+      os: 'Debian 12',
+      cores: '2',
+      ram: '2',
+      notes: 'DNS / Ad-blocking',
+    },
+  },
+  {
+    id: 'vm-2',
+    type: 'vm',
+    position: { x: 320, y: 340 },
+    data: {
+      nodeType: 'vm',
+      name: 'nginx-proxy',
+      vmid: '101',
+      ip: '192.168.1.80',
+      os: 'Ubuntu 22.04',
+      cores: '2',
+      ram: '4',
+      notes: 'Reverse proxy',
+    },
+  },
+  {
+    id: 'lxc-1',
+    type: 'lxc',
+    position: { x: 540, y: 340 },
+    data: {
+      nodeType: 'lxc',
+      name: 'monitoring',
+      ctid: '200',
+      ip: '192.168.1.91',
+      os: 'Debian 12',
+      notes: 'Grafana + Prometheus',
+    },
+  },
+  {
+    id: 'net-1',
+    type: 'network',
+    position: { x: 80, y: 60 },
+    data: {
+      nodeType: 'network',
+      hostname: 'core-switch',
+      ip: '192.168.1.1',
+      model: 'UniFi USW-24-POE',
+      subtype: 'switch',
+      vlan: '1,10,20,30',
+      notes: 'Core L2 switch',
+    },
+  },
+  {
+    id: 'net-2',
+    type: 'network',
+    position: { x: 80, y: 220 },
+    data: {
+      nodeType: 'network',
+      hostname: 'router',
+      ip: '192.168.1.254',
+      model: 'UniFi UDM-Pro',
+      subtype: 'router',
+      notes: 'Gateway / firewall',
+    },
+  },
+  {
+    id: 'nas-1',
+    type: 'storage',
+    position: { x: 580, y: 60 },
+    data: {
+      nodeType: 'storage',
+      hostname: 'truenas-01',
+      ip: '192.168.1.20',
+      os: 'TrueNAS SCALE',
+      capacity: '48TB',
+      raidtype: 'RAIDZ2',
+      notes: 'Primary NAS',
+    },
+  },
+]
+
+export const SAMPLE_EDGES = [
+  { id: 'e-net1-pve1',  source: 'net-1', target: 'pve-1' },
+  { id: 'e-net1-net2',  source: 'net-1', target: 'net-2' },
+  { id: 'e-net1-nas1',  source: 'net-1', target: 'nas-1' },
+  { id: 'e-pve1-vm1',   source: 'pve-1', target: 'vm-1'  },
+  { id: 'e-pve1-vm2',   source: 'pve-1', target: 'vm-2'  },
+  { id: 'e-pve1-lxc1',  source: 'pve-1', target: 'lxc-1' },
+]

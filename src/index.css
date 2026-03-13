@@ -1,0 +1,113 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* Handles all styling for things between <html> tags */
+:root {
+  --bg-primary: #0a0e14;
+  --bg-secondary: #0f1520;
+  --bg-card: #111827;
+  --bg-panel: #0d1117;
+  --border: #1e2a3a;
+  --border-bright: #2a3f5a;
+  --text-primary: #e2e8f0;
+  --text-secondary: #64748b;
+  --text-muted: #374151;
+  --accent-blue: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-amber: #fbbf24;
+  --accent-red: #f87171;
+  --accent-purple: #a78bfa;
+  --accent-cyan: #22d3ee;
+  --accent-orange: #fb923c;
+  --glow-blue: rgba(56, 189, 248, 0.15);
+  --glow-green: rgba(74, 222, 128, 0.15);
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Same idea but this has a lower value for specifyinh  */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.react-flow__background {
+  background-color: var(--bg-primary) !important;
+}
+
+.react-flow__edge-path {
+  stroke: var(--border-bright) !important;
+  stroke-width: 1.5px !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: var(--accent-blue) !important;
+}
+
+.react-flow__handle {
+  background: var(--border-bright) !important;
+  border: 2px solid var(--bg-card) !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+
+.react-flow__handle:hover {
+  background: var(--accent-blue) !important;
+}
+
+.react-flow__controls {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+
+.react-flow__controls-button {
+  background: var(--bg-card) !important;
+  border-bottom: 1px solid var(--border) !important;
+  color: var(--text-secondary) !important;
+  fill: var(--text-secondary) !important;
+  width: 28px !important;
+  height: 28px !important;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--bg-secondary) !important;
+  fill: var(--text-primary) !important;
+}
+
+.react-flow__minimap {
+  background: var(--bg-card) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+}
+
+.react-flow__minimap-mask {
+  fill: rgba(56, 189, 248, 0.08) !important;
+}
+
+.react-flow__attribution {
+  display: none !important;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fade-in 0.2s ease forwards; }

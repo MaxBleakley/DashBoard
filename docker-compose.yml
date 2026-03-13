@@ -1,0 +1,7 @@
+services:
+  homelab-dashboard:
+    build: .
+    container_name: homelab-dashboard
+    restart: unless-stopped
+    ports:
+      - "8080:80"
