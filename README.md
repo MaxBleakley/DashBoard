@@ -31,7 +31,7 @@ Create a docker-compose.yml:
 
 services:
   homelab-dashboard:
-    image: backatom/homelab-dashboard:latest
+    image: maxbleakley/homelab-dashboard:latest
     container_name: homelab-dashboard
     restart: unless-stopped
     ports:
