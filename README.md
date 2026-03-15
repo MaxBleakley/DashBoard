@@ -1,5 +1,7 @@
 # Homelab Dashboard
 
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+
 A self-hosted, interactive topology map for visualising your homelab infrastructure. 
 Built with React, React Flow, and served via Nginx in a single Docker container.
 
