@@ -216,11 +216,16 @@ function LabNode({ data, selected }) {
           }}>ctid: {data.ctid}</div>
         )}
       </div>
-
-      <Handle type="target" position={Position.Top}    style={{ top: -4 }} />
-      <Handle type="source" position={Position.Bottom} style={{ bottom: -4 }} />
-      <Handle type="source" position={Position.Right}  style={{ right: -4 }} />
-      <Handle type="target" position={Position.Left}   style={{ left: -4 }} />
+      
+      
+        <Handle type="source" position={Position.Top}    id="top-source"    style={{ top: -4 }} />
+        <Handle type="target" position={Position.Top}    id="top-target"    style={{ top: -4 }} />
+        <Handle type="source" position={Position.Bottom} id="bottom-source" style={{ bottom: -4 }} />
+        <Handle type="target" position={Position.Bottom} id="bottom-target" style={{ bottom: -4 }} />
+        <Handle type="source" position={Position.Right}  id="right-source"  style={{ right: -4 }} />
+        <Handle type="target" position={Position.Right}  id="right-target"  style={{ right: -4 }} />
+        <Handle type="source" position={Position.Left}   id="left-source"   style={{ left: -4 }} />
+        <Handle type="target" position={Position.Left}   id="left-target"   style={{ left: -4 }} />
     </div>
   )
 }

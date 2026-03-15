@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useRef } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import {
   ReactFlow,
   Background,
@@ -51,6 +51,33 @@ export default function App() {
   const [panelMode, setPanelMode] = useState(null)
   const [createType, setCreateType] = useState(null)
   const [reactFlowInstance, setReactFlowInstance] = useState(null)
+  const [clipboard, setClipboard] = useState(null)
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.ctrlKey && e.key === 'c' && selectedNode) {
+        setClipboard(selectedNode)
+      }
+      if (e.ctrlKey && e.key === 'v' && clipboard) {
+        const newNode = {
+          ...clipboard,
+          id: `${clipboard.data.nodeType}-${uuidv4().slice(0, 8)}`,
+          position: {
+            x: clipboard.position.x + 30,
+            y: clipboard.position.y + 30,
+          },
+          data: { ...clipboard.data },
+        }
+        setNodes(nds => {
+          const updated = [...nds, newNode]
+          saveTopology(updated, edges)
+          return updated
+        })
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [selectedNode, clipboard, reactFlowInstance, edges])
 
   const onConnect = useCallback((params) => {
     setEdges(eds => {
@@ -80,14 +107,12 @@ export default function App() {
     const viewport = reactFlowInstance?.getViewport() || { x: 0, y: 0, zoom: 1 }
     const x = (window.innerWidth  / 2 - viewport.x) / viewport.zoom - 90
     const y = (window.innerHeight / 2 - viewport.y) / viewport.zoom - 60
-
     const newNode = {
       id: `${formData.nodeType}-${uuidv4().slice(0, 8)}`,
       type: formData.nodeType,
       position: { x, y },
       data: formData,
     }
-
     setNodes(nds => {
       const updated = [...nds, newNode]
       saveTopology(updated, edges)
@@ -241,7 +266,7 @@ export default function App() {
         pointerEvents: 'none',
         letterSpacing: '0.06em',
       }}>
-        CLICK node to edit · DRAG handles to connect · DEL to remove selected edge
+        CLICK node to edit · DRAG handles to connect · DEL to remove selected edge · CTRL+C/V to copy/paste
       </div>
     </div>
   )
