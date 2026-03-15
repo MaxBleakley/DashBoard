@@ -26,9 +26,10 @@ docker run -d \
   --restart unless-stopped \
   maxbleakley/homelab-dashboard:latest
 
-### Docker Compose
-Create a docker-compose.yml:
+## Docker Compose
 
+Create a `docker-compose.yml` file with the following contents:
+```yaml
 services:
   homelab-dashboard:
     image: maxbleakley/homelab-dashboard:latest
@@ -36,11 +37,20 @@ services:
     restart: unless-stopped
     ports:
       - "8080:80"
+```
 
 Then run:
+```bash
 docker compose up -d
+```
 
-Access at http://localhost:8080 or http://your-ip:8080
+Access the dashboard at `http://localhost:8080` or `http://<your-host-ip>:8080`.
+
+To update to the latest version:
+```bash
+docker compose pull
+docker compose up -d
+```
 
 ---
 
