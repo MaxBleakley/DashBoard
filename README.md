@@ -1,16 +1,78 @@
-# React + Vite
+# Homelab Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A self-hosted, interactive topology map for visualising your homelab infrastructure. 
+Built with React, React Flow, and served via Nginx in a single Docker container.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Interactive node graph with drag-and-drop layout
+- Node types: Proxmox, VM, LXC, Bare Metal, Network Device, Storage
+- Click any node to edit its properties
+- Draw connections between nodes by dragging handles
+- Topology auto-saved to browser localStorage
+- Export and import topology as JSON
+- Dark terminal aesthetic
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Quick Start
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Docker Run
+docker run -d \
+  -p 8080:80 \
+  --name homelab-dashboard \
+  --restart unless-stopped \
+  maxbleakley/homelab-dashboard:latest
+
+### Docker Compose
+Create a docker-compose.yml:
+
+services:
+  homelab-dashboard:
+    image: backatom/homelab-dashboard:latest
+    container_name: homelab-dashboard
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+
+Then run:
+docker compose up -d
+
+Access at http://localhost:8080 or http://your-ip:8080
+
+---
+
+## Usage
+
+- Add nodes using the toolbar buttons at the top
+- Click a node to open the properties panel and edit details
+- Drag from the handles (dots on node edges) to connect nodes
+- Select an edge and press Delete to remove it
+- Export your topology to JSON for backup or version control
+- Import a previously exported JSON to restore a topology
+
+---
+
+## Node Types
+
+| Type           | Use Case                        |
+|----------------|---------------------------------|
+| Proxmox Host   | Proxmox VE hypervisor           |
+| Virtual Machine| QEMU/KVM VM                     |
+| LXC Container  | Linux container                 |
+| Bare Metal     | Physical host or workstation    |
+| Network Device | Router, switch, or access point |
+| Storage        | NAS, TrueNAS, or storage array  |
+
+---
+
+## Roadmap
+
+- Proxmox API integration for live VM/LXC data
+- CPU, RAM, and uptime monitoring per node
+- Multiple saved topology pages
+- Dark/light theme toggle
+
+---
