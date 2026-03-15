@@ -66,6 +66,26 @@ docker compose up -d
 
 ---
 
+## Development
+
+Clone the repository:
+
+git clone https://github.com/maxbleakley/homelab-dashboard
+cd homelab-dashboard
+
+Install dependencies:
+
+npm install
+
+Run the development server:
+
+npm run dev
+
+The dashboard will be available at:
+http://localhost:5173
+
+---
+
 ## Node Types
 
 | Type           | Use Case                        |
