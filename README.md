@@ -62,6 +62,7 @@ docker compose up -d
 - Select an edge and press Delete to remove it
 - Export your topology to JSON for backup or version control
 - Import a previously exported JSON to restore a topology
+- NOTE: The topology that loads on first deployment is an example topology
 
 ---
 
