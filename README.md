@@ -77,11 +77,15 @@ cd homelab-dashboard
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Run the development server:
 
+```bash
 npm run dev
+```
 
 The dashboard will be available at:
 http://localhost:5173
