@@ -70,8 +70,10 @@ docker compose up -d
 
 Clone the repository:
 
-git clone https://github.com/maxbleakley/homelab-dashboard
+```bash
+git clone https://github.com/maxbleakley/homelab-dashboard.git
 cd homelab-dashboard
+```
 
 Install dependencies:
 
